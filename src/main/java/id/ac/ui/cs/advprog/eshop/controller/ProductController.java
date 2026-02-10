@@ -24,7 +24,7 @@ public class ProductController {
     }
 
     @PostMapping("/create")
-    public String createProductPost(@ModelAttribute Product product, Model model) {
+    public String createProductPost(@ModelAttribute Product product) {
         service.create(product);
         return "redirect:list";
     }
@@ -36,7 +36,7 @@ public class ProductController {
         return "productList";
     }
 
-    // ===== EDIT =====
+    // EDIT (sudah ada dari branch edit-product)
     @GetMapping("/edit/{id}")
     public String editProductPage(@PathVariable("id") String id, Model model) {
         Product product = service.findById(id);
@@ -48,5 +48,12 @@ public class ProductController {
     public String editProductPost(@ModelAttribute Product product) {
         service.update(product);
         return "redirect:list";
+    }
+
+    // DELETE (BARU)
+    @PostMapping("/delete/{id}")
+    public String deleteProduct(@PathVariable("id") String id) {
+        service.deleteById(id);
+        return "redirect:/product/list";
     }
 }

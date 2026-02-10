@@ -12,6 +12,6 @@ public interface ProductService {
     Product findById(String productId);
     Product update(Product product);
 
-    // DELETE (dipakai di branch delete-product)
+    // DELETE
     boolean deleteById(String productId);
 }
