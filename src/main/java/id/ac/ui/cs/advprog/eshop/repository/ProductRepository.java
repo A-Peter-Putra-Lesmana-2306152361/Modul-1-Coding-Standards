@@ -20,7 +20,7 @@ public class ProductRepository {
         return productData.iterator();
     }
 
-    // EDIT SUPPORT
+    // EDIT SUPPORT (sudah ada dari branch edit-product)
     public Product findById(String productId) {
         for (Product p : productData) {
             if (p.getProductId() != null && p.getProductId().equals(productId)) {
@@ -41,7 +41,7 @@ public class ProductRepository {
         return null;
     }
 
-    // DELETE SUPPORT (dipakai di branch delete-product)
+    // DELETE FEATURE
     public boolean deleteById(String productId) {
         return productData.removeIf(p -> p.getProductId() != null && p.getProductId().equals(productId));
     }
