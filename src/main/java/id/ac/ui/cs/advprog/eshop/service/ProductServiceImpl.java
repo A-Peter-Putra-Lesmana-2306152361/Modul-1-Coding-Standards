@@ -5,12 +5,12 @@ import id.ac.ui.cs.advprog.eshop.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 @Service
-public class ProductServiceImpl implements ProductService{
+public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductRepository productRepository;
@@ -20,13 +20,27 @@ public class ProductServiceImpl implements ProductService{
         productRepository.create(product);
         return product;
     }
+
     @Override
     public List<Product> findAll() {
-        Iterator<Product> productIterator = productRepository.findAll();
-        List<Product> allProduct = new ArrayList<>();
-        productIterator.forEachRemaining(allProduct::add);
-        return allProduct;
+        Iterator<Product> it = productRepository.findAll();
+        List<Product> all = new ArrayList<>();
+        it.forEachRemaining(all::add);
+        return all;
     }
 
+    @Override
+    public Product findById(String productId) {
+        return productRepository.findById(productId);
+    }
 
+    @Override
+    public Product update(Product product) {
+        return productRepository.update(product);
+    }
+
+    @Override
+    public boolean deleteById(String productId) {
+        return productRepository.deleteById(productId);
+    }
 }
