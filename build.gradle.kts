@@ -32,15 +32,16 @@ dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     annotationProcessor("org.projectlombok:lombok")
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.boot:spring-boot-starter-thymeleaf-test")
     testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-    testImplementation("org.seleniumhq.selenium:selenium-java:$seleniumJavaVersion")
-    testImplementation("io.github.bonigarcia:selenium-jupiter:$seleniumJupiterVersion")
-    testImplementation("io.github.bonigarcia:webdrivermanager:$webdrivermanagerVersion")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
 
+    // Functional test (Selenium)
+    testImplementation("org.seleniumhq.selenium:selenium-java:4.22.0")
+    testImplementation("io.github.bonigarcia:selenium-jupiter:5.1.1")
+    testImplementation("io.github.bonigarcia:webdrivermanager:5.9.2")
 }
 tasks.register<Test>("unitTest") {
     description = "Runs unit tests."
